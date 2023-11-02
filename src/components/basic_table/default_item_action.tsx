@@ -19,7 +19,7 @@ import { DefaultItemAction as Action } from './action_types';
 import { useGeneratedHtmlId } from '../../services/accessibility';
 import { EuiScreenReaderOnly } from '../accessibility';
 
-export interface DefaultItemActionProps<T> {
+export interface DefaultItemActionProps<T extends object> {
   action: Action<T>;
   enabled: boolean;
   item: T;

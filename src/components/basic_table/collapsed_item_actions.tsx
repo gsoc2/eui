@@ -16,7 +16,7 @@ import { EuiI18n } from '../i18n';
 import { Action, CustomItemAction } from './action_types';
 import { ItemIdResolved } from './table_types';
 
-export interface CollapsedItemActionsProps<T> {
+export interface CollapsedItemActionsProps<T extends object> {
   actions: Array<Action<T>>;
   item: T;
   itemId: ItemIdResolved;
@@ -30,13 +30,13 @@ interface CollapsedItemActionsState {
   popoverOpen: boolean;
 }
 
-function actionIsCustomItemAction<T extends {}>(
+function actionIsCustomItemAction<T extends object>(
   action: Action<T>
 ): action is CustomItemAction<T> {
   return action.hasOwnProperty('render');
 }
 
-export class CollapsedItemActions<T> extends Component<
+export class CollapsedItemActions<T extends object> extends Component<
   CollapsedItemActionsProps<T>,
   CollapsedItemActionsState
 > {
